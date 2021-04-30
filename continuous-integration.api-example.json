@@ -1,0 +1,27 @@
+{
+    "api" : "continuous-integration/1.0.0",
+    "continuous-integration": { 
+        "unit-test": { 
+            "evidence": { 
+                "test-quantity": 50,
+                "passing-quantity": 50,
+                "link": "evidenceStore.com/continuous-integration/unit-test/[identity].evidence"
+            },
+            "policy": "github.com/example-project/continuous-integration.policy@v1.0.0",
+            "attestation" : { 
+                "test-failure": 0,
+                "compliant": true
+            },
+            "report": { 
+                "test-quantity": 50,
+                "passing-quantity": 50,
+                "test-failure": 0,
+                "policy-compliant": true,
+                "links": {
+                    "policy": "#/continuous-integration/unit-test/ploicy/link",
+                    "evidence": "#/continuous-integration/unit-test/evidence/link"
+                }
+            }
+        }
+    }
+}
