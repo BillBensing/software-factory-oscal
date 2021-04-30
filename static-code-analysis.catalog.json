@@ -1,0 +1,78 @@
+{
+    "catalog" : {
+        "uuid" : "00000000-0000-0000-0000-000000000001",
+        "metadata": {
+            "title": "Automated Governance Continuous Integration Workflow",
+            "published": "2021-04-22T12:00:00.000-04:00",
+            "last-modified": "2021-04-22T12:00:00.000-04:00",
+            "version": "1.0",
+            "oscal-version": "1.0.0-rc2",
+            "remarks": "A controls catalog which describes compliance standards for an autogoverned continuous intergration workflow."
+          },
+          "groups" : [
+              {
+                "id" : "sca-1",
+                "title" : "Static Code Analysis",
+                "props" : [
+                    { 
+                        "name": "label",
+                        "value": "1"
+                    }
+                ],
+                "groups" : [
+                    {
+                        "id": "sca-1.1",
+                        "title": "Unit Test Lines of Source Code Coverage",
+                        "props": [
+                            {
+                                "name": "label",
+                                "value": "1.1"
+                            }
+                        ],
+                        "parts": [
+                            {
+                                "id": "sca-1.1-obj",
+                                "name": "objective",
+                                "prose": "To ensure unit test cover at least a ceratin percentage of all executable pathways for a source code."
+                              }
+                        ],
+                        "controls" : [
+                            {
+                                "id": "sca-1.1.1",
+                                "title": "Lines of source code covered by units tests is greater than, or equal too, policy expectation.",
+                                "props": [
+                                    {
+                                        "name": "label",
+                                        "value": "1.1.1"
+                                    }
+                                ],
+                                "params": [
+                                    {
+                                        "id": "sca-1.1.1-param-req",
+                                        "label": "Required Lines of Code Covered",
+                                        "usage": "Stores the value which describes the minimum percentage of code coverage required to meet control expectations."
+                                    },
+                                    {
+                                        "id": "sca-1.1.1-param-act",
+                                        "label": "Actual Lines of Code Covered",
+                                        "usage": "The percentage of code covered by the unit tests."
+                                    }
+                                ],
+                                "constraints": [
+                                    {
+                                        "description" : "Actual percentage of lines of source code covered is greater than, or equal too, the requried lines of source code covered by policy.",
+                                        "tests": [
+                                            {
+                                                "expression": "{{ insert: param, sca-1.1.1-param-act}} >= {{ insert: param, sca-1.1.1-param-req}}"
+                                            }
+                                        ] 
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+              }
+          ]
+    }
+}
